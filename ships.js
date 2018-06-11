@@ -4,11 +4,11 @@ var Ship = function (game) {
 
     this.sx = -32;
     this.x = this.sx;
-    this.y = Math.floor(64 * Math.random());
+    this.y = 0; //Math.floor(64 * Math.random());
     this.active = false;
     this.dx = .25 + Math.random() * .75;
 
-    this.hp = .5;
+    this.hp = 10;
 
     gra = game.add.graphics(this.x, this.y);
 
@@ -39,6 +39,7 @@ Ship.prototype.tick = function () {
 
     this.x += this.dx;
     this.sprite.x = this.x;
+    this.sprite.y = this.y;
 
 };
 
