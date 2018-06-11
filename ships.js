@@ -8,7 +8,8 @@ var Ship = function (game) {
     this.active = false;
     this.dx = .25 + Math.random() * .75;
 
-    this.hp = 10;
+    this.maxHp = 5;
+    this.hp = this.maxHp;
 
     gra = game.add.graphics(this.x, this.y);
 
@@ -23,6 +24,8 @@ var Ship = function (game) {
 Ship.prototype.hit = function (damage) {
 
     this.hp -= damage;
+	
+	console.log(damage);
 
     if (this.hp <= 0) {
 
@@ -140,6 +143,7 @@ ShipCollection.prototype.setOneActive = function () {
             ship.active = true;
             ship.x = -32;
             ship.y = Math.floor(64 * Math.random());
+            ship.hp = ship.maxHp;
 
             this.activeShips += 1;
             break;

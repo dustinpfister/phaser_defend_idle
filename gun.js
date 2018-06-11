@@ -44,10 +44,6 @@ Shot.prototype.done = function (ships) {
 
     var self = this;
 
-    this.active = false;
-    this.x = -8;
-    this.y = -8;
-
     ships.ships.forEach(function (ship) {
 
         if (ship.active) {
@@ -56,7 +52,6 @@ Shot.prototype.done = function (ships) {
 
             if (d <= self.blastRadius) {
 
-                console.log(d);
                 ship.hit(d / self.blastRadius * self.damage);
 
             }
@@ -65,7 +60,11 @@ Shot.prototype.done = function (ships) {
 
     });
 
-}
+    this.active = false;
+    this.x = -8;
+    this.y = -8;
+
+};
 
 Shot.prototype.set = function (gun, x, y) {
 
