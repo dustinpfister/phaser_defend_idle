@@ -8,6 +8,8 @@ var Ship = function (game) {
     this.active = false;
     this.dx = .25 + Math.random() * .75;
 
+    this.hp = .5;
+
     gra = game.add.graphics(this.x, this.y);
 
     gra.beginFill(0x00ff00);
@@ -15,6 +17,21 @@ var Ship = function (game) {
     gra.endFill();
 
     this.sprite = gra;
+
+};
+
+Ship.prototype.hit = function (damage) {
+
+    this.hp -= damage;
+
+    if (this.hp <= 0) {
+
+        this.active = false;
+
+    }
+
+    this.x = this.sx;
+    this.sprite.x = this.x;
 
 };
 
@@ -36,9 +53,9 @@ var ShipCollection = function (game) {
 
     this.level = 1;
     this.maxShips = 10; // max number of ships
-    this.maxUse = 10; // max ships to use
+    this.maxUse = 1; // max ships to use
     this.activeShips = 0;
-    this.releaceRate = 1000; // the rate at which a ship will release from the stack
+    this.releaceRate = 3000; // the rate at which a ship will release from the stack
     this.lastReleace = new Date();
 
     this.xMax = 320;

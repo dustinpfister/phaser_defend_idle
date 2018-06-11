@@ -4,9 +4,10 @@ var Shot = function (game) {
 
     this.active = false;
     this.frame = 0;
-    this.maxFrame = 100;
+    this.maxFrame = 10;
 
     this.blastRadius = 50;
+    this.damage = 1;
 
     gra = game.add.graphics(0, 0);
     gra.beginFill(0xffffff);
@@ -56,7 +57,7 @@ Shot.prototype.done = function (ships) {
             if (d <= self.blastRadius) {
 
                 console.log(d);
-                ship.active = false;
+                ship.hit(d / self.blastRadius * self.damage);
 
             }
 
