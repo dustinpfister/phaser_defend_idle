@@ -56,7 +56,7 @@ var ShipCollection = function (game) {
 
     this.level = 1;
     this.maxShips = 10; // max number of ships
-    this.maxUse = 1; // max ships to use
+    this.maxUse = 10; // max ships to use
     this.activeShips = 0;
     this.releaceRate = 3000; // the rate at which a ship will release from the stack
     this.lastReleace = new Date();

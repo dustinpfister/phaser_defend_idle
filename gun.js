@@ -4,7 +4,7 @@ var Shot = function (game) {
 
     this.active = false;
     this.frame = 0;
-    this.maxFrame = 10;
+    this.maxFrame = 100;
 
     this.blastRadius = 50;
     this.damage = 1;
@@ -103,8 +103,9 @@ var Gun = function (game) {
     this.activeShots = 0;
     this.shots = [];
 
-    this.fireRate = 1000;
+    this.fireRate = 200;
     this.lastFire = new Date();
+    this.leadX = 32;
 
     var i = 0;
     while (i < this.maxShots) {
@@ -165,7 +166,7 @@ Gun.prototype.fire = function (ships) {
 
             if (!shot.active) {
 
-                shot.set(this, targets[0].x, targets[0].y);
+                shot.set(this, targets[0].x + this.leadX, targets[0].y);
 
                 break;
             }
